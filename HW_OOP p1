@@ -7,18 +7,36 @@ class Vehicle:
         self.mileage = mileage
 
     def print_vehicle(self):
-        print(f'Аccording to statistics, the average family has a vehicle that can reach speed up to {self.max_speed} '
-              f'and has an average mileage of about {self.mileage} km')
+        print(f'Vehicle can reach speed up to {self.max_speed} '
+              f'and has an average mileage of about {self.mileage} km.')
 
-vehicle = Vehicle("230 km per hour",20000)
+vehicle = Vehicle("180 km per hour",15000)
 vehicle.print_vehicle()
 
 Output:
-Аccording to statistics, the average family has a vehicle that can reach speed up to 230 km per hour and has an average mileage of about 20000 km.
+Vehicle can reach speed up to 180 km per hour and has an average mileage of about 15000 km.
 
 #2. Create a child class Bus that will inherit all of the variables and methods of the Vehicle class and will have seating_capacity own method
 
+class Bus(Vehicle):
 
+    def __init__(self, max_speed, mileage, seat_capacity):
+        self.seat_capacity = seat_capacity
+        self.max_speed = max_speed
+        self.mileage = mileage
+        super().__init__(max_speed, mileage)
+
+    def seat(self):
+        print(f'A bus has {self.seat_capacity} seats.')
+
+bus = Bus('160 km per hour', 8000, 56)
+bus.print_vehicle()
+bus.seat()
+
+Output:
+Vehicle can reach speed up to 180 km per hour and has an average mileage of about 15000 km.
+Vehicle can reach speed up to 180 km per hour and has an average mileage of about 15000 km.
+A bus has 56 seats.
 
 #3. Determine which class a given Bus object belongs to (Check type of an object)
 
