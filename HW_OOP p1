@@ -1,21 +1,20 @@
 #1. Create a Vehicle class with max_speed and mileage instance attributes
 
 class Vehicle:
-    Vehicle_type = 'Car'
 
     def __init__(self, max_speed, mileage):
         self.max_speed = max_speed
         self.mileage = mileage
 
-Car = Vehicle ('230 km/h', 1000)
+    def print_vehicle(self):
+        print(f'Аccording to statistics, the average family has a vehicle that can reach speed up to {self.max_speed} '
+              f'and has an average mileage of about {self.mileage} km')
 
-
-print(f'Vehicle type is a {Car.Vehicle_type}')
-print(f'It can gather speed up to {Car.max_speed} and has initial run only {Car.mileage} km')
+vehicle = Vehicle("230 km per hour",20000)
+vehicle.print_vehicle()
 
 Output:
-Vehicle type is a Car
-It can gather speed up to 230 km/h and has initial run only 1000 km
+Аccording to statistics, the average family has a vehicle that can reach speed up to 230 km per hour and has an average mileage of about 20000 km.
 
 #2. Create a child class Bus that will inherit all of the variables and methods of the Vehicle class and will have seating_capacity own method
 
@@ -42,7 +41,7 @@ make a tuple of it and by using for call their action using the same method.
 
 
 
-#Magic methods:
+##Magic methods:
 ########################
 
 #8. Create class City with name, population instance attributes, return a new instance only when population > 1500,
