@@ -1,21 +1,21 @@
 #1. Create a Vehicle class with max_speed and mileage instance attributes
 
 class Vehicle:
-    Vehicle_type = 'Bus'
+    Vehicle_type = 'Car'
 
     def __init__(self, max_speed, mileage):
         self.max_speed = max_speed
         self.mileage = mileage
 
-Vehicle_1 = Vehicle ('180 km/h', 1000)
+Car = Vehicle ('230 km/h', 1000)
 
 
-print(f'Vehicle type is a {Vehicle_1.Vehicle_type}')
-print(f'It can gather speed up to {Vehicle_1.max_speed} and has initial run only {Vehicle_1.mileage} km')
+print(f'Vehicle type is a {Car.Vehicle_type}')
+print(f'It can gather speed up to {Car.max_speed} and has initial run only {Car.mileage} km')
 
 Output:
-Vehicle type is a Bus
-It can gather speed up to 180 km/h and has initial run only 1000 km
+Vehicle type is a Car
+It can gather speed up to 230 km/h and has initial run only 1000 km
 
 #2. Create a child class Bus that will inherit all of the variables and methods of the Vehicle class and will have seating_capacity own method
 
