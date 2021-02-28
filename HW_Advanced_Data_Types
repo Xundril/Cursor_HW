@@ -220,11 +220,7 @@ x = 4
 y = 7
 z = 10
 
-def foo (x,y,z):
-    if y < x and x > z:
-        return z
-    else:
-        return y
+def foo(x, y, z): return z if y < x and x > z else y
 print(foo(x,y,z))
 
 Output:
