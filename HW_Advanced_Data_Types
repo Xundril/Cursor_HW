@@ -54,7 +54,7 @@ Anna has 7 apples and 4 peaches.
 
 #7. By using keyword arguments into the curly braces.
 
-print('Anna has {Apple} apples and {Peache} peaches.'.format(Apple=4, Peache=7))
+print('Anna has {Apple} apples and {Peach} peaches.'.format(Apple=4, Peache=7))
 Output:
 Anna has 4 apples and 7 peaches.
 
@@ -155,8 +155,8 @@ for num in range(1, 11):
 print(d)
 
 ===========================
-dict_comp4 = {num ** 2 if num % 2 == 1 else num // 0.5 for num in range(1, 11)}
-print(dict_comp4)
+dict_comp4 = {num: num ** 2 if num % 2 == 1 else num // 0.5  for num in range (1, 11)}
+print (dict_comp4)
 
 Output:
 {1, 4.0, 8.0, 9, 12.0, 16.0, 49, 81, 20.0, 25}
