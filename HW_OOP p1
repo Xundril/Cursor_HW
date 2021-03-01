@@ -7,14 +7,14 @@ class Vehicle:
         self.mileage = mileage
 
     def print_vehicle(self):
-        print(f'Vehicle can reach speed up to {self.max_speed} '
-              f'and has an average mileage of about {self.mileage} km.')
+        print(f'Vehicle speed {self.max_speed}, '
+              f'mileage {self.mileage} km.')
 
 vehicle = Vehicle("180 km per hour",15000)
 vehicle.print_vehicle()
 
 Output:
-Vehicle can reach speed up to 180 km per hour and has an average mileage of about 15000 km.
+Vehicle speed 180 km per hour, mileage 15000 km.
 
 #2. Create a child class Bus that will inherit all of the variables and methods of the Vehicle class and will have seating_capacity own method
 
@@ -34,8 +34,8 @@ bus.print_vehicle()
 bus.seat()
 
 Output:
-Vehicle can reach speed up to 180 km per hour and has an average mileage of about 15000 km.
-Vehicle can reach speed up to 180 km per hour and has an average mileage of about 15000 km.
+Vehicle speed 180 km per hour, mileage 15000 km.
+Vehicle speed 160 km per hour, mileage 8000 km.
 A bus has 56 seats.
 
 #3. Determine which class a given Bus object belongs to (Check type of an object)
@@ -77,7 +77,19 @@ True
 
 #5. Create a new class School with get_school_id and number_of_students instance attributes
 
+class School:
+    def __init__(self, get_school_id, number_of_students):
+        self.get_school_id = get_school_id
+        self.number_of_students = number_of_students
 
+    def print_School(self):
+        print(f'School id is {self.get_school_id}, Total number of students - {self.number_of_students}')
+
+school = School(1234567,620)
+school.print_School()
+
+Output:
+School id is 1234567, Total number of students - 620
 
 #6*. Create a new class SchoolBus that will inherit all of the methods from School and Bus and will have its own - bus_school_color
 
