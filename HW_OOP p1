@@ -21,22 +21,21 @@ Vehicle speed 180 km per hour, mileage 15000 km.
 class Bus(Vehicle):
 
     def __init__(self, max_speed, mileage, seat_capacity):
-        self.seat_capacity = seat_capacity
-        self.max_speed = max_speed
-        self.mileage = mileage
         super().__init__(max_speed, mileage)
+        self.seat_capacity = seat_capacity
+
+    def seat_capacity(self, seating_capacity):
+        self.seating_capacity = seating_capacity
 
     def seat(self):
-        print(f'A bus has {self.seat_capacity} seats.')
+        print(f'Bus specifications: max speed - {self.max_speed}, mileage - {self.mileage}, seats - {self.seat_capacity}.')
 
 bus = Bus('160 km per hour', 8000, 56)
 bus.print_vehicle()
 bus.seat()
 
 Output:
-Vehicle speed 180 km per hour, mileage 15000 km.
-Vehicle speed 160 km per hour, mileage 8000 km.
-A bus has 56 seats.
+Bus specifications: max speed - 160 km per hour, mileage - 8000, seats - 56.
 
 #3. Determine which class a given Bus object belongs to (Check type of an object)
 
@@ -176,6 +175,9 @@ Your city is too small
 
 Popul = City('Kiev', 2900000)
 print(Popul)
+
+Output:
+The population of the city Kiev is 2900000
 
 #10*. Override magic method __add__() to perform the additional action as 'multiply' (*) the value which is greater than 10. And perform this add (+) of two instances.
 
