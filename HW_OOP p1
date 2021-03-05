@@ -39,16 +39,6 @@ Bus specifications: max speed - 160 km per hour, mileage - 8000, seats - 56.
 
 #3. Determine which class a given Bus object belongs to (Check type of an object)
 
-class Vehicle:
-
-    def __init__(self, max_speed, mileage, seat_capacity):
-        self.seat_capacity = seat_capacity
-        self.max_speed = max_speed
-        self.mileage = mileage
-
-class Bus(Vehicle):
-    pass
-
 bus = Bus(160, 8000, 56)
 
 print(type(bus))
@@ -57,15 +47,6 @@ Output:
 <class '__main__.Bus'>
 
 #4. Determine if School_bus is also an instance of the Vehicle class
-
-class Vehicle:
-    def __init__(self, max_speed, mileage, seat_capacity):
-        self.seat_capacity = seat_capacity
-        self.max_speed = max_speed
-        self.mileage = mileage
-
-class Bus(Vehicle):
-    pass
 
 School_bus = Bus(40, 120, 5000)
 
