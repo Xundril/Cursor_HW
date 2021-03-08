@@ -3,26 +3,55 @@ class Laptop:
     """
     Make the class with composition.
     """
+    def __init__(self):
+        lithium_ion_element_1 = Battery('capacity_1')
+        lithium_ion_element_2 = Battery('capacity_2')
+        self.battery_elements = [lithium_ion_element_1, lithium_ion_element_2]
+
+
 class Battery:
     """
     Make the class with composition.
     """
+    def __init__(self, capacity):
+        self.capacity = capacity
+
+
+laptop = Laptop()
 
 2.
 class Guitar:
     """
     Make the class with aggregation
     """
+
+    def __init__(self, guitar_string):
+        self.guitar_string = guitar_string
+
 class GuitarString:
     """
     Make the class with aggregation
     """
+    def __init__(self):
+        pass
+
+guitar_string = GuitarString
+guitar = Guitar(guitar_string)
+
 3
 class Calc:
     """
     Make class with one method "add_nums" with 3 parameters, which returns sum of these parameters.
     Note: this method should not take instance as first parameter.
     """
+    @staticmethod
+    def add_nums(value_1, value_2, value_3):
+        return value_1 + value_2 + value_3
+
+print(Calc.add_nums(4, 7, 10))
+
+Output:
+21
 
 4*.
 class Pasta:
@@ -38,6 +67,27 @@ class Pasta:
         pasta_2.ingredients will equal to ['bacon', 'parmesan', 'eggs']
     """
 
+    def __init__(self, list_of_ingredients):
+        self.list_of_ingredients = list_of_ingredients
+
+    @classmethod
+    def carbonara(cls):
+        return Pasta(['forcemeat', 'tomatoes'])
+
+    @classmethod
+    def bolognaise(cls):
+        return Pasta(['bacon', 'parmesan', 'eggs'])
+
+Italian_pasta_1 = Pasta(["tomato", "cucumber"])
+Italian_pasta_2 = Pasta.bolognaise()
+
+print(Italian_pasta_1.list_of_ingredients)
+print(Italian_pasta_2.list_of_ingredients)
+
+Output:
+['tomato', 'cucumber']
+['bacon', 'parmesan', 'eggs']
+
 5*.
 class Concert:
     """
@@ -50,20 +100,93 @@ class Concert:
         concert.visitors_count = 1000
         print(concert.visitors_count)  # 50
     """
+    
+    max_visitor_num = 0
+
+    def __init__(self, visitors_count=0):
+        self._visitors_count = visitors_count
+
+    @property
+    def visitors_count(self):
+        return self._visitors_count
+
+    @visitors_count.setter
+    def visitors_count(self, visitor_count):
+        if visitor_count <= self.max_visitor_num:
+            self._visitors_count = visitor_count
+        else:
+            self._visitors_count = self.max_visitor_num
+
+Concert.max_visitor_num = 50
+concert = Concert()
+concert.visitors_count = 1000
+print(concert.visitors_count)
+
+Output:
+50
 
 6.
+import dataclasses
+
+@dataclasses.dataclass
 class AddressBookDataClass:
     """
     Create dataclass with 7 fields - key (int), name (str), phone_number (str), address (str), email (str), birthday (str), age (int)
     """
+    key: int
+    name: str
+    phone_number: str
+    address: str
+    email: str
+    birthday: str
+    age: int
+
+Address_1 = AddressBookDataClass(1, 'Mike', '098 123 45 67', 'Kiev', 'Mike@ukr.net', '01-02-1991', 30)
+print(Address_1)
+
+Output:
+AddressBookDataClass(key=1, name='Mike', phone_number='098 123 45 67', address='Kiev', email='Mike@ukr.net', birthday='01-02-1991', age=30)
 
 7. Create the same class (6) but using NamedTuple
+
+import collections
+
+AddressBookNamedTuple = collections.namedtuple('AddressBookNamedTuple', ['key', 'name', 'phone_number', 'address', 'email', 'birthday', 'age'])
+
+Address_2 = AddressBookDataClass(2, 'Kate', '068 123 45 67', 'Dnipro', 'Kate@ukr.net', '02-03-1992', 29)
+
+print(Address_2)
+
+Output:
+AddressBookDataClass(key=2, name='Kate', phone_number='068 123 45 67', address='Dnipro', email='Kate@ukr.net', birthday='02-03-1992', age=29)
+
 8.
 class AddressBook:
     """
     Create regular class taking 7 params on init - key, name, phone_number, address, email, birthday, age
     Make its str() representation the same as for AddressBookDataClass defined above.
     """
+    
+    def __init__(self, key, name, phone_number, address, email, birthday, age):
+        self.key = key
+        self.name = name
+        self.phone_number = phone_number
+        self.address = address
+        self.email = email
+        self.birthday = birthday
+        self.age = age
+
+    def __str__(self):
+        return f'AddressBook(key = {self.key}, name = {self.name}, phone_number = {self.phone_number},' \
+               f'address = {self.address}, email = {self.email}, birthday = {self.birthday}, age = {self.age})'
+
+Address_3 = AddressBook(3, 'Victor', '073 123 45 67', 'Kharkiv', 'Victor@ukr.net', '03-04-1993', 28)
+
+print(Address_3)
+
+Output:
+AddressBook(key = 3, name = Victor, phone_number = 073 123 45 67,address = Kharkiv, email = Victor@ukr.net, birthday = 03-04-1993, age = 28)
+    
 9.
 class Person:
     """
@@ -72,6 +195,14 @@ class Person:
     name = "John"
     age = 36
     country = "USA"
+
+person = Person()
+
+setattr(person, 'age', 29)
+print(person.age)
+
+Output:
+29
 
 10.
 class Student:
@@ -86,17 +217,34 @@ class Student:
         self.id = id
         self.name = name
 
+student = Student(4, "Mike")
+student.email = 'Mike@ukr.net'
+setattr(student, 'student_email', 'Mike@ukr.net')
+
+print(getattr(student, 'student_email'))
+
+Output:
+Mike@ukr.net
+
 11*.
 class Celsius:
     """
     By using @property convert the celsius to fahrenheit
     Hint: (temperature * 1.8) + 32)
     """
+
     def __init__(self, temperature=0):
         self._temperature = temperature
 
-
+    @property
+    def temperature(self):
+        return (self._temperature * 1.8) + 32
+        
 # create an object
-{obj} = ...
 
-print({obj}.temperature)
+fahrenheit = Celsius(42)
+
+print(fahrenheit.temperature)
+
+Output:
+107.60000000000001
