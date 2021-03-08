@@ -219,9 +219,9 @@ class Student:
 
 student = Student(4, "Mike")
 student.email = 'Mike@ukr.net'
-setattr(student, 'student_email', 'Mike@ukr.net')
+setattr(student, student.email, 'Mike@ukr.net')
 
-print(getattr(student, 'student_email'))
+print(getattr(student, student.email))
 
 Output:
 Mike@ukr.net
