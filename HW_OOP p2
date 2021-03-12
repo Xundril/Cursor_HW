@@ -35,7 +35,7 @@ class GuitarString:
     def __init__(self):
         pass
 
-guitar_string = GuitarString
+guitar_string = GuitarString()
 guitar = Guitar(guitar_string)
 
 3
@@ -217,11 +217,12 @@ class Student:
         self.id = id
         self.name = name
 
+
 student = Student(4, "Mike")
 student.email = 'Mike@ukr.net'
-setattr(student, student.email, 'Mike@ukr.net')
+student_email = getattr(student, 'email')
 
-print(getattr(student, student.email))
+print(student_email)
 
 Output:
 Mike@ukr.net
